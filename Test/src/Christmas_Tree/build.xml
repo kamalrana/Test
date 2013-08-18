@@ -1,0 +1,33 @@
+<!--
+Interesting targets:
+
+client (default target) - creates furniture.jar
+server - builds server.jar
+clean - removes derived files
+
+You can download the ant build software that uses this file from
+http://jakarta.apache.org/ant
+
+-->
+
+<project name="ChristmasTree"  default="compile"  basedir=".">
+
+    <property name="src.dir" value="."/>
+    <property name="classes.dir" value="classes"/>
+
+    <target name="init">
+      <mkdir dir="${classes.dir}"/>
+    </target>
+    
+    <target name="compile" depends="init">
+      <javac srcdir=" ${src.dir}" destdir="${classes.dir}" debug="true">
+	<include name="**/*.java"/>
+      </javac>
+    </target>
+
+    <target name="clean">
+      <delete dir="${classes.dir}"/>
+    </target>
+</project>
+
+

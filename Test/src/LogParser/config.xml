@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration >
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+   <appender name="A2" class="org.apache.log4j.ConsoleAppender">
+      <layout class="org.apache.log4j.SimpleLayout"/>
+   </appender>
+
+   <plugin name="LogFileReceiver" class="org.apache.log4j.varia.LogFilePatternReceiver">
+     <param name="fileURL" value="file:///c:/sample.log"/>
+     <!-- <param name="timestampFormat" value="yyyy-MM-dd HH:mm:ss,SSS"/> -->
+     <param name="logFormat" value="TIMESTAMP [THREAD] [LEVEL] [LOGGER] CLASS.METHOD - MESSAGE"/> 
+     <param name="name" value="sampleLogFilePatternReceiver"/>
+     <param name="tailing" value="true"/> 
+   </plugin>
+
+
+
+   <root>
+      <level value="debug"/>
+   </root>
+</log4j:configuration>
+
