@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 public class log4jExample {
 	/* Get actual class name to be printed on */
 	static Logger log = Logger.getLogger(log4jExample.class.getName());
-	static File file = new File("c:/sqlite/big.out");
+	static File file = new File("D:/sqlite/TwoMbLog.out");
 
 	public static void main(String[] args) throws IOException, SQLException {
 		int i = 0, j = 0;
@@ -50,35 +50,79 @@ public class log4jExample {
     "                           at com.example.myproject.OpenSessionInViewFilter.doFilter(OpenSessionInViewFilter.java:30)";
 		if(!file.exists())
 			System.exit(1);
-		while ((file.length() / 1024) / 1024 <= 2000) {
+		while ((file.length() / 1024) / 1024 <= 2) {
 			r1 = r.nextInt(6);
 			getThread(r1);
 			i++;
+			int k = r.nextInt(2);
 			switch (r1) {
 			case 0:
+				System.out.println(k);
+				if(k==0)
 				log.debug(i+"<< >> "+s);
+				else
+					log.debug("Hello this is an debug message no. >> " + (i)
+							+ " <<< Hello this is an debug message no"
+							+ "Hello this is an debug message no. >> " + (i)
+							+ " <<< Hello this is an debug message no");
 				break;
 			case 1:
-				log.fatal(i+"<< >> "+s);
+				System.out.println(k);
+				if(k==0)
+					log.fatal("Hello this is an fatal message no. >> " + (i)
+							+ " <<< Hello this is an fatal message no"
+							+ "Hello this is an fatal message no. >> " + (i)
+							+ " <<< Hello this is an fatal message no");
+					else
+						log.fatal(i+"<< >> "+s);
 				break;
 			case 2:
+				System.out.println(k);
+				if(k==0)
+					log.warn("Hello this is an warn message no. >> " + (i)
+							+ " <<< Hello this is an warn message no"
+							+ "Hello this is an warn message no. >> " + (i)
+							+ " <<< Hello this is an warn message no");
+					else
 				log.warn(i+"<< >> "+s);
 				break;
 			case 3:
+				System.out.println(k);
+				if(k==0)
+					log.trace("Hello this is an trace message no. >> " + (i)
+							+ " <<< Hello this is an trace message no"
+							+ "Hello this is an trace message no. >> " + (i)
+							+ " <<< Hello this is an trace message no");
+					else
 				log.trace(i+"<< >> "+s);
 				break;
 			case 4:
-				if (j++ > 1000)
+				System.out.println(k);
+				if (j++ > 1000){
 					continue;
+				}
+				if(k==0)
+					log.error("Hello this is an error message no. >> " + (i)
+							+ " <<< Hello this is an error message no"
+							+ "Hello this is an error message no. >> " + (i)
+							+ " <<< Hello this is an error message no");
+					else
 				log.error(i+"<< >> "+s);
 			break;
 			case 5:
+				System.out.println(k);
+				if(k==0)
+					log.info("Hello this is an info message no. >> " + (i)
+							+ " <<< Hello this is an info message no"
+							+ "Hello this is an info message no. >> " + (i)
+							+ " <<< Hello this is an info message no");
+					else
 				log.info(i+"<< >> "+s);
 			break;
 			default:
 				break;
 			}
-			System.out.println(i + " - " + j);
+//			System.out.println(i + " - " + j);
 		}
 
 	}
